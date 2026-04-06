@@ -1,7 +1,7 @@
 {
-  "buildCommand": "npx quartz build",
+  "buildCommand": "node ./quartz/bootstrap-cli.mjs build",
   "outputDirectory": "public",
-  "installCommand": "npm ci",
+  "installCommand": "npm install",
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false
