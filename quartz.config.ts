@@ -12,7 +12,7 @@ import { QuartzConfig } from "./quartz/cfg"
     enableSPA: true,
     enablePopovers: true,
     locale: "zh-CN",
-    baseUrl: "",
+    baseUrl: "buffett.beatwade.cn",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
     generateSocialImages: false,
