@@ -40,3 +40,21 @@ echo ""
 echo "=== 完成 ==="
 echo "Vercel 会自动构建部署，约 2-3 分钟后生效。"
 echo "https://kb.beatwade.cn"
+
+# IndexNow: notify search engines for instant indexing
+echo ""
+echo "=== 4. IndexNow 通知 ==="
+INDEXNOW_KEY="9c7910c49c47eb21f401ee25e3bd326a"
+if command -v curl &> /dev/null; then
+  curl -s -X POST "https://api.indexnow.org/indexnow" \
+    -H "Content-Type: application/json" \
+    -d "{
+      \"host\": \"kb.beatwade.cn\",
+      \"key\": \"$INDEXNOW_KEY\",
+      \"keyLocation\": \"https://kb.beatwade.cn/static/$INDEXNOW_KEY.txt\",
+      \"urlList\": [
+        \"https://kb.beatwade.cn/\",
+        \"https://kb.beatwade.cn/sitemap.xml\"
+      ]
+    }" && echo "  IndexNow notified." || echo "  IndexNow failed (non-critical)."
+fi

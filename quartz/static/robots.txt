@@ -1,0 +1,40 @@
+# GEO: Allow all AI crawlers and Chinese search engines
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# AI Search Crawlers - explicitly allow
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Bytespider
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+# Chinese Search Engine Bots
+User-agent: Baiduspider
+Allow: /
+User-agent: Sogou web spider
+Allow: /
+User-agent: 360Spider
+Allow: /
+User-agent: YisouSpider
+Allow: /
+
+# Sitemaps
+Sitemap: https://kb.beatwade.cn/sitemap.xml
+
+# IndexNow
+# https://www.indexnow.org/documentation

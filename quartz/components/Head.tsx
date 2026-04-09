@@ -5,6 +5,72 @@ import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { unescapeHTML } from "../util/escape"
 import { CustomOgImagesEmitterName } from "../plugins/emitters/ogImage"
+
+function buildJsonLd(cfg: GlobalConfiguration, fileData: QuartzComponentProps["fileData"], title: string, description: string, socialUrl: string) {
+  const baseUrl = cfg.baseUrl ?? "example.com"
+  const schemas: Record<string, unknown>[] = []
+
+  // WebSite schema (only on homepage)
+  if (fileData.slug === "index") {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: cfg.pageTitle,
+      url: `https://${baseUrl}`,
+      description: description,
+      inLanguage: "zh-CN",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `https://${baseUrl}/search?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    })
+  }
+
+  // Article schema for all content pages
+  if (fileData.slug !== "index" && fileData.slug !== "404") {
+    const articleSchema: Record<string, unknown> = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: title,
+      description: description,
+      url: socialUrl,
+      inLanguage: "zh-CN",
+      author: {
+        "@type": "Organization",
+        name: "beatwade",
+        url: `https://${baseUrl}`,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "beatwade",
+        url: `https://${baseUrl}`,
+      },
+    }
+
+    // Add date if available
+    const created = fileData.frontmatter?.created
+    const modified = fileData.frontmatter?.modified || fileData.frontmatter?.lastmod
+    if (created) articleSchema.datePublished = created
+    if (modified) articleSchema.dateModified = modified
+
+    // Add keywords from frontmatter
+    const keywords = fileData.frontmatter?.keywords || fileData.frontmatter?.tags
+    if (keywords) {
+      const kwArray = Array.isArray(keywords) ? keywords : [keywords]
+      articleSchema.keywords = kwArray.join(", ")
+    }
+
+    schemas.push(articleSchema)
+  }
+
+  return schemas.length > 0
+    ? schemas.map((s) => ({
+        __html: JSON.stringify(s),
+      }))
+    : []
+}
+
 export default (() => {
   const Head: QuartzComponent = ({
     cfg,
@@ -36,6 +102,18 @@ export default (() => {
     )
     const ogImageDefaultPath = `https://${cfg.baseUrl}/static/og-image.png`
 
+    // Build JSON-LD structured data
+    const jsonLdSchemas = buildJsonLd(cfg, fileData, title, description, socialUrl)
+
+    // Extract keywords for meta tag
+    const keywords = fileData.frontmatter?.keywords || fileData.frontmatter?.tags
+    const kwString = keywords
+      ? (Array.isArray(keywords) ? keywords : [keywords]).join(", ")
+      : undefined
+
+    // Build canonical URL
+    const canonicalUrl = socialUrl.endsWith("/") ? socialUrl.slice(0, -1) : socialUrl
+
     return (
       <head>
         <title>{title}</title>
@@ -52,6 +130,7 @@ export default (() => {
         )}
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href={canonicalUrl} />
 
         <meta name="og:site_name" content={cfg.pageTitle}></meta>
         <meta property="og:title" content={title} />
@@ -61,6 +140,23 @@ export default (() => {
         <meta name="twitter:description" content={description} />
         <meta property="og:description" content={description} />
         <meta property="og:image:alt" content={description} />
+
+        {/* AI Search & SEO enhanced meta tags */}
+        <meta name="description" content={description} />
+        {kwString && <meta name="keywords" content={kwString} />}
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+        <meta property="article:published_time" content={fileData.frontmatter?.created} />
+        <meta property="article:section" content={fileData.frontmatter?.category?.[0]} />
+        {kwString && <meta property="article:tag" content={kwString} />}
+
+        {/* JSON-LD Structured Data for AI Search (GEO) */}
+        {jsonLdSchemas.map((schema, i) => (
+          <script
+            key={`jsonld-${i}`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={schema}
+          />
+        ))}
 
         {!usesCustomOgImage && (
           <>
@@ -83,7 +179,6 @@ export default (() => {
         )}
 
         <link rel="icon" href={iconPath} />
-        <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
 
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
