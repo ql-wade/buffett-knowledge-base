@@ -17,7 +17,7 @@ import { QuartzConfig } from "./quartz/cfg"
     defaultDateType: "created",
     generateSocialImages: false,
     theme: {
-      fontOrigin: "googleFonts",
+      fontOrigin: "local",
       cdnCaching: true,
       typography: {
         header: "Noto Serif SC",
