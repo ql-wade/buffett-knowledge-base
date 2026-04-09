@@ -9,26 +9,40 @@ import { CustomOgImagesEmitterName } from "../plugins/emitters/ogImage"
 function buildJsonLd(cfg: GlobalConfiguration, fileData: QuartzComponentProps["fileData"], title: string, description: string, socialUrl: string) {
   const baseUrl = cfg.baseUrl ?? "example.com"
   const schemas: Record<string, unknown>[] = []
+  const slug = fileData.slug ?? ""
 
-  // WebSite schema (only on homepage)
-  if (fileData.slug === "index") {
+  // WebSite + Organization schema (homepage only)
+  if (slug === "index") {
     schemas.push({
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      name: cfg.pageTitle,
-      url: `https://${baseUrl}`,
-      description: description,
-      inLanguage: "zh-CN",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: `https://${baseUrl}/search?q={search_term_string}`,
-        "query-input": "required name=search_term_string",
-      },
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": `https://${baseUrl}/#organization`,
+          name: "beatwade",
+          url: `https://${baseUrl}`,
+          sameAs: ["https://github.com/ql-wade"],
+        },
+        {
+          "@type": "WebSite",
+          "@id": `https://${baseUrl}/#website`,
+          name: cfg.pageTitle,
+          url: `https://${baseUrl}`,
+          description: description,
+          inLanguage: "zh-CN",
+          publisher: { "@id": `https://${baseUrl}/#organization` },
+          potentialAction: {
+            "@type": "SearchAction",
+            target: `https://${baseUrl}/search?q={search_term_string}`,
+            "query-input": "required name=search_term_string",
+          },
+        },
+      ],
     })
   }
 
   // Article schema for all content pages
-  if (fileData.slug !== "index" && fileData.slug !== "404") {
+  if (slug !== "index" && slug !== "404") {
     const articleSchema: Record<string, unknown> = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -48,13 +62,11 @@ function buildJsonLd(cfg: GlobalConfiguration, fileData: QuartzComponentProps["f
       },
     }
 
-    // Add date if available
     const created = fileData.frontmatter?.created
     const modified = fileData.frontmatter?.modified || fileData.frontmatter?.lastmod
     if (created) articleSchema.datePublished = created
     if (modified) articleSchema.dateModified = modified
 
-    // Add keywords from frontmatter
     const keywords = fileData.frontmatter?.keywords || fileData.frontmatter?.tags
     if (keywords) {
       const kwArray = Array.isArray(keywords) ? keywords : [keywords]
@@ -64,11 +76,62 @@ function buildJsonLd(cfg: GlobalConfiguration, fileData: QuartzComponentProps["f
     schemas.push(articleSchema)
   }
 
-  return schemas.length > 0
-    ? schemas.map((s) => ({
-        __html: JSON.stringify(s),
-      }))
-    : []
+  // FAQPage schema — highest priority for AI search (GEO)
+  // Reads faq frontmatter: faq: [{q: "问题", a: "答案"}, ...]
+  const faqItems = fileData.frontmatter?.faq as Array<{ q: string; a: string }> | undefined
+  if (faqItems && faqItems.length > 0) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.a,
+        },
+      })),
+    })
+  }
+
+  // BreadcrumbList schema — helps AI understand site hierarchy
+  if (slug !== "index" && slug !== "404") {
+    const parts = slug.split("/")
+    const breadcrumbItems = [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "首页",
+        item: `https://${baseUrl}`,
+      },
+    ]
+    const categoryNames: Record<string, string> = {
+      finance: "金融投资",
+      psychology: "心理认知",
+      business: "商业管理",
+      philosophy: "哲学",
+      tech: "技术思维",
+      history: "历史文化",
+      scifi: "科幻",
+      biography: "传记",
+      "deep-analysis": "深度分析",
+    }
+    if (parts.length >= 1 && categoryNames[parts[0]]) {
+      breadcrumbItems.push({
+        "@type": "ListItem",
+        position: 2,
+        name: categoryNames[parts[0]],
+        item: `https://${baseUrl}/${parts[0]}`,
+      })
+    }
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumbItems,
+    })
+  }
+
+  return schemas.map((s) => ({ __html: JSON.stringify(s) }))
 }
 
 export default (() => {
@@ -145,8 +208,8 @@ export default (() => {
         <meta name="description" content={description} />
         {kwString && <meta name="keywords" content={kwString} />}
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
-        <meta property="article:published_time" content={fileData.frontmatter?.created} />
-        <meta property="article:section" content={fileData.frontmatter?.category?.[0]} />
+        {fileData.frontmatter?.created && <meta property="article:published_time" content={fileData.frontmatter.created} />}
+        {fileData.frontmatter?.category?.[0] && <meta property="article:section" content={fileData.frontmatter.category[0]} />}
         {kwString && <meta property="article:tag" content={kwString} />}
 
         {/* JSON-LD Structured Data for AI Search (GEO) */}
