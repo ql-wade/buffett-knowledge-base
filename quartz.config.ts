@@ -7,12 +7,12 @@ import { QuartzConfig } from "./quartz/cfg"
 
  const config: QuartzConfig = {
   configuration: {
-    pageTitle: "巴菲特致股东信 · 知识库",
+    pageTitle: "知识库 · beatwade",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
     locale: "zh-CN",
-    baseUrl: "buffett.beatwade.cn",
+    baseUrl: "kb.beatwade.cn",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
     generateSocialImages: false,
