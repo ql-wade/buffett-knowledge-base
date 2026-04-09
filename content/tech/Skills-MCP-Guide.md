@@ -184,7 +184,6 @@ npm run build
 
 # 验证
 if [ -f "dist/servers/design-converter.js" ]; then
-echo "✅ Build successful"
 
   # 添加到 container-mcp.json
   # (手动或使用 jq)
@@ -288,19 +287,12 @@ cat ~/.openclaw/container-mcp.json | jq .
 
 ## 🎉 构建完成状态 (2026-03-10)
 
-### design-to-code MCP 已构建 ✅
-
 ```bash
 # 构建日志
 cd ~/.openclaw/skills/design-to-code
-npm install    # ✅ 61 packages installed
-npm run build  # ✅ TypeScript compiled
 
 # 输出文件
-dist/servers/design-converter.js  # ✅ 已生成 (5277 bytes)
 ```
-
-### container-mcp.json 已配置 ✅
 
 ```json
 {
