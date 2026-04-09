@@ -354,10 +354,6 @@ workbuddy:
 
 | 插件 | 依赖 | 状态 | 解决方案 |
 |------|------|------|----------|
-| design-to-code | Figma API Token | ⚠️ 可选 | 按需配置 |
-| playwright-cli | Node.js | ✅ 已安装 | v22.22.0 |
-| data-analysis | Python | ✅ 已安装 | 系统自带 |
-| deep-research | - | ✅ 无依赖 | - |
 
 ### 6.2 环境配置
 

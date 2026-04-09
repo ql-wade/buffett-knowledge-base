@@ -90,12 +90,6 @@ ls dist/servers/design-converter.js
 
 | Skill | MCP 需求 | 状态 | 操作 |
 |-------|----------|------|------|
-| design-to-code | ✅ 需要 | ⚠️ 需构建 | npm install && npm run build |
-| agent-browser | ❌ 不需要 | ✅ CLI | 直接使用命令 |
-| data-analysis | ❌ 不需要 | ✅ 纯文档 | read SKILL.md |
-| deep-research | ❌ 不需要 | ✅ 纯文档 | read SKILL.md |
-| document-skills | ❌ 不需要 | ✅ 纯文档 | read SKILL.md |
-| trading-assistant | ❌ 不需要 | ✅ 纯文档 | read SKILL.md |
 
 ---
 

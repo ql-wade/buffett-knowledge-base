@@ -228,9 +228,6 @@ agents:
 
 | Skill | 依赖 | 状态 | 说明 |
 |-------|------|------|------|
-| agent-browser | node/npm v22.22.0 | ✅ 已安装 | 浏览器自动化 |
-| agent-autopilot | todo-management | ✅ 已安装 | 任务管理 |
-| diagram-generator | mcp-diagram-generator | ⚠️ 可选 | 可使用 excalidraw/mermaid 替代 |
 
 ### 5.2 替代方案
 
