@@ -7,3 +7,4 @@ __pycache__/
 fix_links.py
 fix_remaining.py
 verify_links.py
+.vercel
