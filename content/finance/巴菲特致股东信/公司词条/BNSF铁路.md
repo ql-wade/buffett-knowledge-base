@@ -2,6 +2,8 @@
 公司: BNSF铁路
 来源: "[公司词条/BNSF铁路]"
 tags: [投资案例, 巴菲特]
+title: "BNSF铁路"
+description: "BNSF铁路（Burlington Northern Santa Fe Railway）是北美最大的货运铁路公司之一，按货运量计算是美国最大的铁路公司。"
 ---
 
 # BNSF铁路

@@ -1,6 +1,6 @@
 {
   "name": "buffett-knowledge-base",
-  "description": "巴菲特致股东信知识库 - 221篇信件翻译、投资概念、公司分析",
+  "description": "书籍拆解知识库 - 763篇深度拆解，涵盖金融投资、心理认知、商业管理、哲学等9大品类",
   "version": "1.0.0",
   "private": true,
   "scripts": {

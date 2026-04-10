@@ -18,7 +18,37 @@ for pair in "finance:金融类" "psychology:心理学类" "business:商业类" "
 done
 echo "  Done."
 
-echo "=== 2. Quartz 构建 ==="
+echo "=== 1.5. 清理未解析 Wikilink ==="
+# Strip broken wikilinks: [[concept]] → concept, [[concept|alias]] → alias
+python3 - "$DST" << 'PYEOF'
+import os, re, sys
+d = sys.argv[1]
+names = set()
+paths = set()
+for r, _, fs in os.walk(d):
+    for f in fs:
+        if f.endswith('.md'):
+            names.add(f[:-3])
+            paths.add(os.path.relpath(os.path.join(r, f), d)[:-3])
+pat = re.compile(r'\[\[([^\]|#]+)(?:#[^|\]]*)?(?:\|([^\]]+))?\]\]')
+changed = 0
+for r, _, fs in os.walk(d):
+    for f in fs:
+        if not f.endswith('.md'): continue
+        p = os.path.join(r, f)
+        with open(p, 'r', encoding='utf-8') as fh: c = fh.read()
+        def repl(m):
+            t = m.group(1).strip()
+            bn = os.path.basename(t)
+            if bn in names or t in paths: return m.group(0)
+            return (m.group(2) or t).strip()
+        nc = pat.sub(repl, c)
+        if nc != c:
+            with open(p, 'w', encoding='utf-8') as fh: fh.write(nc)
+            changed += 1
+print(f"  Cleaned {changed} files")
+PYEOF
+echo "  Done."
 cd "$SCRIPT_DIR"
 NODE_OPTIONS="--max-old-space-size=4096" node ./quartz/bootstrap-cli.mjs build
 echo "  Done."
@@ -27,6 +57,29 @@ echo "  Done."
 cp "$SCRIPT_DIR/public/static/robots.txt" "$SCRIPT_DIR/public/robots.txt" 2>/dev/null || true
 cp "$SCRIPT_DIR/public/static/9c7910c49c47eb21f401ee25e3bd326a.txt" "$SCRIPT_DIR/public/9c7910c49c47eb21f401ee25e3bd326a.txt" 2>/dev/null || true
 echo "  Copied robots.txt and IndexNow key to site root."
+
+echo "=== 2.5. 断链检测 ==="
+BROKEN=0
+# Collect all wikilink targets and check if they resolve
+while IFS= read -r target; do
+  fname=$(basename "$target")
+  if [ -n "$fname" ] && ! find "$DST" -name "${fname}.md" -print -quit 2>/dev/null | grep -q .; then
+    BROKEN=$((BROKEN + 1))
+  fi
+done < <(grep -roh '\[\[[^]|#]*' "$DST/" --include="*.md" 2>/dev/null | sed 's/\[\[//' | sort -u)
+
+if [ "$BROKEN" -gt 20 ]; then
+  echo "  ⚠️ WARNING: $BROKEN broken wikilinks detected (threshold: 20)"
+  echo "  Run fix script before publishing."
+  read -p "  Continue anyway? (y/N) " -n 1 -r
+  echo
+  if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "  Aborted."
+    exit 1
+  fi
+else
+  echo "  ✅ $BROKEN broken wikilinks (OK, threshold: 20)"
+fi
 
 echo "=== 3. Git 推送 ==="
 git add -A
