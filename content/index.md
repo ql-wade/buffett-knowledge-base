@@ -36,7 +36,7 @@ faq:
 → [[finance/索引|查看全部]]
 
 ### 心理认知
-- [[psychology/思考快与慢/_导航|思考快与慢]] · [[psychology/影响力/_导航|影响力]] · [[psychology/心流/_导航|心流]] · [[psychology/非暴力沟通/_导航|非暴力沟通]]
+- [[psychology/思考快与慢/_导航|思考快与慢]] · [[psychology/影响力/第1章-影响力的武器|影响力]] · [[psychology/心流/_导航|心流]] · [[psychology/非暴力沟通/_导航|非暴力沟通]]
 → [[psychology/索引|查看全部]]
 
 ### 商业管理
