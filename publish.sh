@@ -23,6 +23,11 @@ cd "$SCRIPT_DIR"
 NODE_OPTIONS="--max-old-space-size=4096" node ./quartz/bootstrap-cli.mjs build
 echo "  Done."
 
+# Fix: copy robots.txt and IndexNow key to site root (search engines expect /robots.txt not /static/robots.txt)
+cp "$SCRIPT_DIR/public/static/robots.txt" "$SCRIPT_DIR/public/robots.txt" 2>/dev/null || true
+cp "$SCRIPT_DIR/public/static/9c7910c49c47eb21f401ee25e3bd326a.txt" "$SCRIPT_DIR/public/9c7910c49c47eb21f401ee25e3bd326a.txt" 2>/dev/null || true
+echo "  Copied robots.txt and IndexNow key to site root."
+
 echo "=== 3. Git 推送 ==="
 git add -A
 if git diff --cached --quiet; then
@@ -51,7 +56,7 @@ if command -v curl &> /dev/null; then
     -d "{
       \"host\": \"kb.beatwade.cn\",
       \"key\": \"$INDEXNOW_KEY\",
-      \"keyLocation\": \"https://kb.beatwade.cn/static/$INDEXNOW_KEY.txt\",
+      \"keyLocation\": \"https://kb.beatwade.cn/$INDEXNOW_KEY.txt\",
       \"urlList\": [
         \"https://kb.beatwade.cn/\",
         \"https://kb.beatwade.cn/sitemap.xml\"
