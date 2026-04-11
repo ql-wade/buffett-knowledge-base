@@ -2,8 +2,6 @@
 公司: IBM
 来源: "[公司词条/IBM]"
 tags: [投资案例, 巴菲特]
-title: "IBM"
-description: "国际商业机器公司（International Business Machines Corporation），简称IBM，是全球最具历史传承的科技巨头之一。1911年创立，总部位于纽约州阿蒙克。"
 ---
 
 # IBM

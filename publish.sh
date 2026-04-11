@@ -2,7 +2,7 @@
 # 一键发布：Obsidian → Quartz → GitHub → Vercel
 set -e
 
-VAULT="$HOME/Documents/Obsidian Vault/03-Resources/书籍拆解/1-拆解记录"
+VAULT="$HOME/Documents/KB-Vault"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DST="$SCRIPT_DIR/content"
 
