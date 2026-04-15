@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DST="$SCRIPT_DIR/content"
 
 echo "=== 1. 同步 Obsidian → content/ ==="
-for pair in "finance:金融类" "psychology:心理学类" "business:商业类" "philosophy:哲学类" "tech:技术类" "scifi:科幻类" "biography:传记类" "deep-analysis:_深度分析" "history:历史文化类"; do
+for pair in "finance:金融类" "psychology:心理学类" "business:商业类" "philosophy:哲学类" "tech:技术类" "scifi:科幻类" "biography:传记类" "deep-analysis:_深度分析" "history:历史文化类" "medical:医疗类"; do
   eng="${pair%%:*}"
   cn="${pair#*:}"
   rm -rf "$DST/$eng"
