@@ -1,0 +1,73 @@
+{
+  "nodes": [
+    {"id":"root01","text":"# Biodesign医疗科技创新流程\n- 斯坦福Biodesign医疗创新方法论\n- 需求驱动 + 系统化流程 + 商业化前置","type":"text","x":0,"y":-350,"width":400,"height":120,"color":"6"},
+
+    {"id":"stage1","text":"## Identify 识别需求\n从临床观察中发现并精确定义高价值需求","type":"text","x":-700,"y":-100,"width":500,"height":100,"color":"5"},
+    {"id":"ch1","text":"## 第1章 导论与全书概览 Introduction\n三步法框架确立、95%失败率困境揭示\n定律：系统替代天赋，流程优于灵感","type":"text","x":-1200,"y":-250,"width":340,"height":140,"color":"6"},
+    {"id":"ch2","text":"## 第2章 需求发现 Need Finding\n沉浸式临床观察，记录真实痛点\n定律：创新成功率与需求定义精度成正比","type":"text","x":-950,"y":50,"width":320,"height":120,"color":"5"},
+    {"id":"ch3","text":"## 第3章 需求筛选 Need Screening\n量化评分卡筛选300+需求至Top 10\n定律：快速打分和深度调查必须分开","type":"text","x":-620,"y":50,"width":320,"height":120,"color":"5"},
+    {"id":"ch4","text":"## 第4章 需求侦察 Need Scouting\n对Top 10做深度调查：专利/竞品/成本\n定律：侦察深度决定最终选择质量","type":"text","x":-290,"y":50,"width":320,"height":120,"color":"5"},
+    {"id":"ch5","text":"## 第5章 需求定义 Need Specification\n标准化需求陈述：动作+人群+特征\n定律：好的需求陈述是最重要的文档","type":"text","x":40,"y":50,"width":320,"height":120,"color":"5"},
+
+    {"id":"stage2","text":"## Invent 发明方案\n将精确定义的需求转化为可验证的解决方案","type":"text","x":-100,"y":-100,"width":500,"height":100,"color":"5"},
+    {"id":"ch6","text":"## 第6章 头脑风暴 Brainstorming\n有纪律的创意生成：先发散后收敛\n定律：创意质量=信息质量x流程x评估","type":"text","x":-100,"y":250,"width":320,"height":120,"color":"5"},
+    {"id":"ch7","text":"## 第7章 原型设计 Prototyping\n快速原型验证，原型即沟通媒介\n定律：与其争论100次不如做粗糙原型","type":"text","x":230,"y":250,"width":320,"height":120,"color":"5"},
+    {"id":"ch8","text":"## 第8章 知识产权策略 IP Strategy\n专利布局是创新并行组成而非事后手续\n定律：IP策略在早期建立竞争壁垒","type":"text","x":560,"y":250,"width":320,"height":120,"color":"5"},
+
+    {"id":"stage3","text":"## Implement 实施商业化\n跨越死亡之谷，从原型到市场","type":"text","x":500,"y":-100,"width":500,"height":100,"color":"5"},
+    {"id":"ch9","text":"## 第9章 监管路径 Regulatory\nFDA分类审批路径前置设计\n定律：监管是创新的并行约束而非事后补充","type":"text","x":400,"y":50,"width":320,"height":120,"color":"5"},
+    {"id":"ch10","text":"## 第10章 报销策略 Reimbursement\n医保报销可达性决定产品商业价值\n定律：商业价值=技术价值x报销可达性","type":"text","x":730,"y":50,"width":320,"height":120,"color":"5"},
+    {"id":"ch11","text":"## 第11章 商业模式 Business Model\n价值捕获模式决定融资策略和组织架构\n定律：模式与架构共演，价值链决定利润分配","type":"text","x":1060,"y":50,"width":320,"height":120,"color":"5"},
+    {"id":"ch12","text":"## 第12章 公司组建 Company Formation\n四维并行推进：监管/报销/商业/团队\n定律：流程即理念，系统化降低失败率","type":"text","x":1060,"y":250,"width":320,"height":120,"color":"5"},
+
+    {"id":"law1","text":"### 核心定律\n需求驱动定律：成功率与需求定义精度成正比\n数据筛选定律：打分和调查必须分开\n创意结构化定律：信息x流程x评估\n商业化前置定律：市场准入是并行约束\n语言统一性定律：效率与共享语言成正比","type":"text","x":-400,"y":450,"width":350,"height":140,"color":"3"},
+
+    {"id":"books","text":"## 关联书籍\n- 精益创业(方法论互补)\n- 创新者的窘境(视角对立)\n- 从0到1(创新哲学碰撞)\n- 创新者的处方(宏观互补)","type":"text","x":-1200,"y":-100,"width":260,"height":140,"color":"2"},
+
+    {"id":"files","text":"## 拆解文件\n- 全书拆解记录\n- 第1-12章(12章全部拆解)\n- 100本任务追踪\n- 知识图谱","type":"text","x":1200,"y":-100,"width":260,"height":140,"color":"2"},
+
+    {"id":"crit","text":"## 批评与争议\n- 偏向渐进式创新\n- 资源门槛高\n- 数字健康覆盖不足\n- 美国中心主义\n- 过度结构化","type":"text","x":700,"y":450,"width":280,"height":120,"color":"1"}
+  ],
+  "edges": [
+    {"id":"edge0","style":"line","fromNode":"root01","fromSide":"left","toNode":"ch1","toSide":"right","color":"6","label":"全书导论"},
+    {"id":"edge1","style":"line","fromNode":"root01","fromSide":"bottom","toNode":"stage1","toSide":"top","color":"5"},
+    {"id":"edge2","style":"line","fromNode":"root01","fromSide":"bottom","toNode":"stage2","toSide":"top","color":"5"},
+    {"id":"edge3","style":"line","fromNode":"root01","fromSide":"bottom","toNode":"stage3","toSide":"top","color":"5"},
+
+    {"id":"edge4","style":"line","fromNode":"stage1","fromSide":"bottom","toNode":"ch2","toSide":"top","color":"5"},
+    {"id":"edge5","style":"line","fromNode":"stage1","fromSide":"bottom","toNode":"ch3","toSide":"top","color":"5"},
+    {"id":"edge6","style":"line","fromNode":"stage1","fromSide":"bottom","toNode":"ch4","toSide":"top","color":"5"},
+    {"id":"edge7","style":"line","fromNode":"stage1","fromSide":"bottom","toNode":"ch5","toSide":"top","color":"5"},
+
+    {"id":"edge8","style":"line","fromNode":"stage2","fromSide":"bottom","toNode":"ch6","toSide":"top","color":"5"},
+    {"id":"edge9","style":"line","fromNode":"stage2","fromSide":"bottom","toNode":"ch7","toSide":"top","color":"5"},
+    {"id":"edge10","style":"line","fromNode":"stage2","fromSide":"bottom","toNode":"ch8","toSide":"top","color":"5"},
+
+    {"id":"edge11","style":"line","fromNode":"stage3","fromSide":"bottom","toNode":"ch9","toSide":"top","color":"5"},
+    {"id":"edge12","style":"line","fromNode":"stage3","fromSide":"bottom","toNode":"ch10","toSide":"top","color":"5"},
+    {"id":"edge13","style":"line","fromNode":"stage3","fromSide":"bottom","toNode":"ch11","toSide":"top","color":"5"},
+
+    {"id":"edge0b","style":"line","fromNode":"ch1","fromSide":"right","toNode":"ch2","toSide":"top","color":"5","label":"开篇"},
+    {"id":"edge14","style":"line","fromNode":"ch2","fromSide":"right","toNode":"ch3","toSide":"left","color":"5","label":"承接"},
+    {"id":"edge15","style":"line","fromNode":"ch3","fromSide":"right","toNode":"ch4","toSide":"left","color":"5","label":"承接"},
+    {"id":"edge16","style":"line","fromNode":"ch4","fromSide":"right","toNode":"ch5","toSide":"left","color":"5","label":"承接"},
+    {"id":"edge17","style":"line","fromNode":"ch5","fromSide":"bottom","toNode":"ch6","toSide":"top","color":"5","label":"进入Invent"},
+    {"id":"edge18","style":"line","fromNode":"ch6","fromSide":"right","toNode":"ch7","toSide":"left","color":"5","label":"承接"},
+    {"id":"edge19","style":"line","fromNode":"ch7","fromSide":"right","toNode":"ch8","toSide":"left","color":"5","label":"承接"},
+    {"id":"edge20","style":"line","fromNode":"ch8","fromSide":"top","toNode":"ch9","toSide":"left","color":"5","label":"进入Implement"},
+    {"id":"edge21","style":"line","fromNode":"ch9","fromSide":"right","toNode":"ch10","toSide":"left","color":"5","label":"承接"},
+    {"id":"edge22","style":"line","fromNode":"ch10","fromSide":"right","toNode":"ch11","toSide":"left","color":"5","label":"承接"},
+    {"id":"edge23","style":"line","fromNode":"ch11","fromSide":"bottom","toNode":"ch12","toSide":"top","color":"5","label":"承接"},
+
+    {"id":"edge24","style":"line","fromNode":"ch1","fromSide":"bottom","toNode":"law1","toSide":"top","color":"3"},
+    {"id":"edge25","style":"line","fromNode":"ch2","fromSide":"bottom","toNode":"law1","toSide":"top","color":"3"},
+    {"id":"edge26","style":"line","fromNode":"ch6","fromSide":"bottom","toNode":"law1","toSide":"top","color":"3"},
+    {"id":"edge26b","style":"line","fromNode":"ch9","fromSide":"bottom","toNode":"law1","toSide":"top","color":"3"},
+
+    {"id":"edge27","style":"line","fromNode":"root01","fromSide":"left","toNode":"books","toSide":"right","color":"2"},
+    {"id":"edge28","style":"line","fromNode":"root01","fromSide":"right","toNode":"files","toSide":"left","color":"2"},
+
+    {"id":"edge29","style":"line","fromNode":"ch8","fromSide":"bottom","toNode":"ch9","toSide":"top","color":"1","label":"死亡之谷"},
+    {"id":"edge30","style":"line","fromNode":"ch12","fromSide":"bottom","toNode":"crit","toSide":"top","color":"1"}
+  ]
+}

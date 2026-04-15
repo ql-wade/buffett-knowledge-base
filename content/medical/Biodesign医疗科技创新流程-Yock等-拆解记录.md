@@ -17,6 +17,19 @@ links:
   - "精益创业-Eric Ries-拆解记录"
   - "创新者的窘境-Clayton Christensen-拆解记录"
   - "从0到1-Peter Thiel-拆解记录"
+  - "[[Biodesign-第1章-导论与全书概览]]"
+  - "[[Biodesign-第2章-需求发现]]"
+  - "[[Biodesign-第3章-需求筛选]]"
+  - "[[Biodesign-第4章-需求侦察]]"
+  - "[[Biodesign-第5章-需求定义]]"
+  - "[[Biodesign-第6章-头脑风暴]]"
+  - "[[Biodesign-第7章-原型设计]]"
+  - "[[Biodesign-第8章-知识产权策略]]"
+  - "[[Biodesign-第9章-监管路径]]"
+  - "[[Biodesign-第10章-报销策略]]"
+  - "[[Biodesign-第11章-商业模式]]"
+  - "[[Biodesign-第12章-公司组建]]"
+  - "Biodesign知识图谱"
 ---
 
 # 《Biodesign医疗科技创新流程》拆解记录
@@ -71,6 +84,44 @@ mindmap
       Interdisciplinary 跨学科协作
       Evidence-Based 循证决策
 ```
+
+---
+
+## 📚 章节拆解导航
+
+> 以下11个章节已全部完成深度拆解，每个章节独立成篇，包含三层提取、降维翻译、当下映射、四向关联。
+
+### Identify 识别需求（4章）
+
+| 章节 | 标题 | 核心定律 | 链接 |
+|------|------|----------|------|
+| 第1章 | 导论与全书概览（Introduction） | 系统替代天赋定律 | [[Biodesign-第1章-导论与全书概览]] |
+| 第2章 | 需求发现（Need Finding） | 需求驱动定律 | [[Biodesign-第2章-需求发现]] |
+| 第3章 | 需求筛选（Need Screening） | 数据筛选定律 | [[Biodesign-第3章-需求筛选]] |
+| 第4章 | 需求侦察（Need Scouting） | 深度验证定律 | [[Biodesign-第4章-需求侦察]] |
+| 第5章 | 需求定义（Need Specification） | 问题定义定律 | [[Biodesign-第5章-需求定义]] |
+
+### Invent 发明方案（3章）
+
+| 章节 | 标题 | 核心定律 | 链接 |
+|------|------|----------|------|
+| 第6章 | 头脑风暴（Brainstorming） | 创意结构化定律 | [[Biodesign-第6章-头脑风暴]] |
+| 第7章 | 原型设计（Prototyping） | 实物沟通定律 | [[Biodesign-第7章-原型设计]] |
+| 第8章 | 知识产权策略（IP Strategy） | IP并行定律 | [[Biodesign-第8章-知识产权策略]] |
+
+### Implement 实施商业化（4章）
+
+| 章节 | 标题 | 核心定律 | 链接 |
+|------|------|----------|------|
+| 第9章 | 监管路径（Regulatory） | 监管前置定律 | [[Biodesign-第9章-监管路径]] |
+| 第10章 | 报销策略（Reimbursement） | 商业价值乘法定律 | [[Biodesign-第10章-报销策略]] |
+| 第11章 | 商业模式（Business Model） | 模式-架构共演定律 | [[Biodesign-第11章-商业模式]] |
+| 第12章 | 公司组建（Company Formation） | 四维并行定律 | [[Biodesign-第12章-公司组建]] |
+
+### 关联文件
+
+- Biodesign知识图谱 — 知识图谱Canvas
+- 100本书拆解任务追踪 — 任务进度追踪
 
 ---
 

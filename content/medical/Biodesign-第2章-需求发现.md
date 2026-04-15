@@ -14,6 +14,8 @@ chapter:
   title: Identify - 需求发现（Need Finding）
 links:
   - "[[Biodesign医疗科技创新流程-Yock等-拆解记录]]"
+  - "[[Biodesign-第1章-导论与全书概览]]"
+  - "[[Biodesign-第3章-需求筛选]]"
 quality: 优秀
 tags:
   - 内容/章节拆解
